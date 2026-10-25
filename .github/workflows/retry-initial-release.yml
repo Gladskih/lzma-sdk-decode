@@ -1,0 +1,33 @@
+name: Retry initial npm release
+on:
+  schedule:
+    # npm's first-package staging rejection removed the package and imposed a
+    # 24-hour hold. This one-date retry has an additional year/window guard below.
+    - cron: "57 20 26 10 *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: retry-initial-release
+  cancel-in-progress: false
+jobs:
+  retry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Check hold expiry and immutable release identity
+        id: retry
+        run: node scripts/retry-initial-release.mjs
+      - name: Retry the unchanged tagged release through all normal CI gates
+        if: steps.retry.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --ref v0.1.0
