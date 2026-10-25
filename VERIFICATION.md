@@ -40,7 +40,12 @@ The v0.1.0 tagged artifact SHA-256 is
 Build/consumer CI passed. npm publication is initially blocked until
 2026-10-26T20:50:12.845Z: rejecting the only staged version of the new package
 unpublished its placeholder and triggered npm's 24-hour republishing hold.
-The initial retry workflow is scheduled for 2026-10-26 at 20:57 UTC. It dispatches
-the unchanged v0.1.0 publishing workflow through all regular gates. The original
-tag and tested artifact are preserved. Registry publication and OIDC authorization
-must be verified from the successful publishing run; configuration alone is not proof.
+After a fresh interactive passkey challenge, the authenticated npm Trusted
+Publishers lookup returned HTTP 404 for the package. This does not establish
+whether npm physically erased its trust records, but usable OIDC authorization
+is unverified. The initial scheduled retry was disabled and removed rather than
+relying on that assumption. After the hold, restore package existence through
+an authorized initial publish, then configure and verify Trusted Publishing.
+The original tag and tested artifact remain unchanged. No npm release has been
+confirmed. Registry publication and OIDC authorization require direct evidence
+from successful operations; configuration alone is not proof.
