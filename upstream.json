@@ -1,0 +1,18 @@
+{
+  "version": "26.05",
+  "tag": "26.05",
+  "commit": "b88c6bc09339de32f7d18bbab900686b244f42ba",
+  "repository": "https://github.com/ip7z/7zip",
+  "emscriptenVersion": "4.0.23",
+  "emsdkCommit": "c0bb220cb6e6f4e0fabb6f6db9efd53390ef5e56",
+  "files": {
+    "C/LzmaDec.c": "4e6ec665a6df01f1722e2b2fc36dc5e3aa7c3890e0f8cb11c6a07c9a01f3309b",
+    "C/LzmaDec.h": "3aaf07b4ae4173a2d103179455dc7089b5ddbc7fc3db3c0e40964a7499c69266",
+    "C/Lzma2Dec.c": "3d691d30e4a1f4b661d56fc483db702167ff6a91781d143a017c793c1860476f",
+    "C/Lzma2Dec.h": "a4b97083c3817d3e1e3049f8b1abc0b4ca3e91192606497c02bb5351b57422c7",
+    "C/7zTypes.h": "a5d03b8cb65cd3a2a56bde46dd68fb356d2ebacd9d70283e7d4d20b4e0a64713",
+    "C/Precomp.h": "c8903f2e36a771a272d8981e1e9ffed5ba16ca3d2f3dca6d1414d2340a6829d0",
+    "C/Compiler.h": "d5e42be77d26beaa8c81d3e62ef99fc5685736cfc079779fdb9154d05fa8bc4a",
+    "DOC/lzma.txt": "763541aabe15a9ce043c5c8d7520ee799d0079ffb1c270838ac9ef08c0b26106"
+  }
+}

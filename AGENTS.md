@@ -1,0 +1,5 @@
+- Follow CONTRIBUTING.md and audit the final changes before reporting success.
+- Keep the pinned LZMA SDK decoder sources unchanged.
+- Expose only raw LZMA/LZMA2 decoding; container parsing belongs to consumers.
+- Do not add dependencies at runtime or arbitrary input/resource policy caps.
+- Preserve upstream result codes, completion status and consumed input counts.
