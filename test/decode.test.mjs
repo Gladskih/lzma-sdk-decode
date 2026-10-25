@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { createDecoder } from "../src/node.js";
+import { createDecoder } from "../dist/node.js";
 import { lzma, lzma2, plain, properties } from "./vectors.mjs";
 
 test("original SDK decodes raw LZMA and LZMA2 with exact stream consumption", async () => {

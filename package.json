@@ -4,7 +4,9 @@
   "description": "Minimal raw LZMA/LZMA2 decoders from the official LZMA SDK, compiled to WebAssembly",
   "type": "module",
   "license": "MIT AND LicenseRef-Public-Domain",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -16,14 +18,20 @@
     "./build-info.json": "./dist/build-info.json"
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/", "LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/", "upstream.json"],
+  "files": [
+    "dist/",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "licenses/",
+    "upstream.json"
+  ],
   "scripts": {
     "sources:fetch": "node scripts/fetch-sources.mjs",
     "build:wasm": "bash scripts/build-wasm.sh",
     "build": "node scripts/build.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --strict --module nodenext --target es2022 test/types.ts",
-    "test:coverage": "node --experimental-test-coverage --test-coverage-include=src/*.js --test-coverage-lines=100 --test-coverage-functions=100 --test-coverage-branches=100 --test test/*.test.mjs",
+    "test:coverage": "node --experimental-test-coverage --test-coverage-include=dist/*.js --test-coverage-exclude=dist/lzma-sdk-decode.js --test-coverage-lines=100 --test-coverage-functions=100 --test-coverage-branches=100 --test test/*.test.mjs",
     "test:native": "bash scripts/test-native.sh",
     "test:browser": "playwright test",
     "test:mutation": "node scripts/test-mutations.mjs",
@@ -33,11 +41,25 @@
     "prepack": "npm run build && npm run verify:package",
     "benchmark": "node scripts/benchmark.mjs"
   },
-  "repository": { "type": "git", "url": "git+https://github.com/Gladskih/lzma-sdk-decode.git" },
-  "bugs": { "url": "https://github.com/Gladskih/lzma-sdk-decode/issues" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gladskih/lzma-sdk-decode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gladskih/lzma-sdk-decode/issues"
+  },
   "homepage": "https://github.com/Gladskih/lzma-sdk-decode#readme",
-  "publishConfig": { "access": "public" },
-  "keywords": ["lzma", "lzma2", "lzma-sdk", "decoder", "webassembly", "wasm"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "lzma",
+    "lzma2",
+    "lzma-sdk",
+    "decoder",
+    "webassembly",
+    "wasm"
+  ],
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@playwright/test": "1.64.0",

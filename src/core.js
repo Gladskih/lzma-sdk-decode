@@ -19,16 +19,22 @@ export function createApi(module) {
     const size = 12 + 5 + input.byteLength + capacity;
     validateSize(size);
     if (failed) throw new Error("Create a new decoder after a fatal WASM failure.");
-    const pointer = module._malloc(size) >>> 0;
-    if (!pointer) throw new Error("Unable to allocate WASM decode memory.");
+    let pointer;
     try {
-      if (pointer > module.HEAPU8.byteLength - size) throw new Error("Invalid WASM memory range.");
-      return invoke(module, pointer, input, properties, capacity, entry);
+      pointer = module._malloc(size) >>> 0;
     } catch (error) {
       failed = true;
       throw error;
-    } finally {
-      if (!failed) module._free(pointer);
+    }
+    if (!pointer) throw new Error("Unable to allocate WASM decode memory.");
+    try {
+      if (pointer > module.HEAPU8.byteLength - size) throw new Error("Invalid WASM memory range.");
+      const result = invoke(module, pointer, input, properties, capacity, entry);
+      module._free(pointer);
+      return result;
+    } catch (error) {
+      failed = true;
+      throw error;
     }
   }
   return Object.freeze({
