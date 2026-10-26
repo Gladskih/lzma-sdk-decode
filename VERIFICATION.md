@@ -43,8 +43,13 @@ published through an interactive maintainer session after npm's initial
 artifact. This initial release has no registry provenance attestation.
 
 A fresh Trusted Publisher configuration was created and read back for
-Gladskih/lzma-sdk-decode, workflow publish.yml. Version 0.1.1 retains the same
-decoder and wrapper code and exercises the configured OIDC publication path
-with provenance. Configuration alone is not proof of a successful CI publish;
-the release workflow and registry attestations provide that evidence.
+Gladskih/lzma-sdk-decode, workflow publish.yml. Version 0.1.1 was published
+successfully through OIDC by [release CI](https://github.com/Gladskih/lzma-sdk-decode/actions/runs/40402206632)
+on 2026-10-26. All Linux/Windows Node 22/24/26 consumers passed. The downloaded
+registry tarball matches the tested CI artifact SHA-256:
+`36201ff7a76815f3c9bb7fe0250455b83da2256d3ccd965d53ca35f057c25d8a`.
+Installing 0.1.1 from npm and decoding both raw algorithms succeeded. Every
+runtime file matches the original 0.1.0 benchmarked artifact byte-for-byte;
+only package version and build provenance metadata changed. npm audit signatures
+verified both its registry signature and its SLSA provenance attestation.
 The original v0.1.0 tag and tested artifact remain unchanged.
