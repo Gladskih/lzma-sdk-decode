@@ -37,15 +37,14 @@ were checked byte-for-byte against the tested GitHub CI artifact.
 
 The v0.1.0 tagged artifact SHA-256 is
 `892e33e4905369aa69565f47e1073528d67510eb55589eb1f20ab81b718d37e9`.
-Build/consumer CI passed. npm publication is initially blocked until
-2026-10-26T20:50:12.845Z: rejecting the only staged version of the new package
-unpublished its placeholder and triggered npm's 24-hour republishing hold.
-After a fresh interactive passkey challenge, the authenticated npm Trusted
-Publishers lookup returned HTTP 404 for the package. This does not establish
-whether npm physically erased its trust records, but usable OIDC authorization
-is unverified. The initial scheduled retry was disabled and removed rather than
-relying on that assumption. After the hold, restore package existence through
-an authorized initial publish, then configure and verify Trusted Publishing.
-The original tag and tested artifact remain unchanged. No npm release has been
-confirmed. Registry publication and OIDC authorization require direct evidence
-from successful operations; configuration alone is not proof.
+Build/consumer CI passed. On 2026-10-26 the exact tested 0.1.0 tarball was
+published through an interactive maintainer session after npm's initial
+24-hour republishing hold. Its registry SHA-512 integrity matches the tested
+artifact. This initial release has no registry provenance attestation.
+
+A fresh Trusted Publisher configuration was created and read back for
+Gladskih/lzma-sdk-decode, workflow publish.yml. Version 0.1.1 retains the same
+decoder and wrapper code and exercises the configured OIDC publication path
+with provenance. Configuration alone is not proof of a successful CI publish;
+the release workflow and registry attestations provide that evidence.
+The original v0.1.0 tag and tested artifact remain unchanged.
