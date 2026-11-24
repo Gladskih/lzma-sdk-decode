@@ -1,7 +1,7 @@
 # Third-party notices
 
 The WebAssembly module contains the unchanged C LZMA and LZMA2 decoders by
-Igor Pavlov from the official LZMA SDK / 7-Zip 26.05 source tree. These files
+Igor Pavlov from the official LZMA SDK / 7-Zip 26.06 source tree. These files
 are explicitly placed in the public domain. See upstream.json for immutable
 source revision and individual SHA-256 hashes, and licenses/LZMA-SDK.txt.
 

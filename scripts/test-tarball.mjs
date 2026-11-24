@@ -24,7 +24,7 @@ try {
     import { readFile } from "node:fs/promises";
     const asset = import.meta.resolve("lzma-sdk-decode/lzma-sdk-decode.wasm");
     const info = JSON.parse(await readFile(new URL(import.meta.resolve("lzma-sdk-decode/build-info.json"))));
-    assert.equal(info.upstream.version, "26.05");
+    assert.equal(info.upstream.version, "26.06");
     const api = await createDecoder();
     const input = Uint8Array.of(1, 0, 3, 68, 65, 84, 65, 0);
     const expected = {data:Uint8Array.of(68,65,84,65),bytesRead:8,resultCode:0,status:1};

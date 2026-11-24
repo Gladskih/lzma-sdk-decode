@@ -1,7 +1,7 @@
 # lzma-sdk-decode
 
 Minimal **raw LZMA and LZMA2 decoders** for browsers, Workers and Node.js.
-The original Igor Pavlov C decoders from LZMA SDK / 7-Zip 26.05 are compiled
+The original Igor Pavlov C decoders from LZMA SDK / 7-Zip 26.06 are compiled
 unchanged to WebAssembly. No runtime dependencies, encoder, filesystem or
 archive parser. The WASM is a separate, locally loadable asset.
 
